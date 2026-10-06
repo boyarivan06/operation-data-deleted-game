@@ -4,7 +4,6 @@ build/
 debug/
 cmake-build-debug/
 *.bkp
-resources/
 Doxyfile
 *.txt
 test.cpp
