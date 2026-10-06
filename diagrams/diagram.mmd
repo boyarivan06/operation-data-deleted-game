@@ -1,0 +1,178 @@
+classDiagram
+    namespace base {
+        class GameObject {
+            #std::string name
+            #int resource_name
+            #std::pair<int, int> position
+            #Color color
+            +GameObject()
+            +GameObject(std::pair<int, int>)
+            +~GameObject()
+            +get_color() Color
+            +set_position(std::pair<int, int>) void
+            +get_position() std::pair<int, int>
+            +set_color() Color
+        }
+        class Cell {
+            -"std::vector<std::shared_ptr<GameObject>>" objects
+            +~Cell()
+            +get_objects() std::vector<std::shared_ptr<GameObject>>&
+            +add_object(std::shared_ptr<GameObject> & shared) void
+            +is_obstacle() bool
+        }
+    }
+    namespace game {
+        class Field {
+            -CustomMatrix<Cell> cells
+            +Field
+            +get_size() std::pair<int, int>
+            +add_object(std::shard_ptr<GameObject>&) void
+            +operator[](int) CustomVector<Cell>&
+            +make_route(std::pair<int, int>, std::pair<int, int>) std::vector<std::pair<int, int>>
+            include_point(std::pair<int, int>) bool
+        }
+
+        class Level {
+            -Field field
+            -std::string name
+            -std::string preamble
+            +Level()
+            +get_field() Field&
+            +get_name() std::string
+        }
+    }
+    namespace controller {
+        class Controller {
+            -Level current_level
+            -View view
+            -GameState game_state;
+            Controller()
+            +move_obj(GameObject*, std::pair<int, int>) void
+            +handle_keys() void
+            +set_current_object(Creature) void
+            +run_bots() void
+            +get_objects() std::vector<std::shared_ptr<GameObject>>&
+            +control() void
+            +add_object(const std::shared_ptr<GameObject>&) void
+            +run() void
+        }
+    }
+    namespace creatures {
+        class Creature {
+            #int health
+            #int max_health
+            #int time_points
+            #int max_time_points
+            #int distance_of_view
+            #float accuracy
+            #int close_combat_strength
+            #int speed
+            #int armour
+            +Creature()
+            +step(std::pair<int, int> void
+            +is_dead() bool
+            +hit(Creature&) void
+            +cause_damage(int) void
+        }
+        class Foorageer {
+
+        }
+        class Beast{
+
+        }
+        class WildBeast{
+
+        }
+        class RationalBeast {
+
+        }
+        class Inventarior {
+
+        }
+        class Fighter {
+
+        }
+        class Detective {
+            +treat(Medicine) void
+        }
+    }
+
+    namespace items {
+        class Ammo {
+            -int bullet_count
+            +Ammo()
+            +take_bullets(int): void
+        }
+
+        class Depot {
+            -std::vector<Item> content
+        }
+
+        class Item {
+            +~Item()
+        }
+
+        class Medicine {
+            -int treat_time
+            -int health
+            +Medicine()
+            +Medicine(int, int)
+            +heal(int&, int) void
+            +get_treat_time() int
+            +get_remaining_health() int
+        }
+        class Obstacle {
+            -bool breakable
+            +Obstacle()
+            +Obstacle(std::pair<int, int>)
+        }
+        class Weapon {
+            -int damage
+            -int distance
+            -int reload_time
+            -float mistake
+            -int bullet_count
+            +strike(std::pair<int, int>) bool
+        }
+    }
+    namespace view {
+        class View {
+            -int screen_height
+            -int screen_width
+            +View()
+            +draw_view(std::vector<std::shared_ptr<GameObject>>&) void
+            +init_window(const std::string&) void
+            +draw_object(GameObject) void
+            +set_window_size(std::pair<int, int>) void
+        }
+    }
+
+    %% relations
+
+    Creature --|> GameObject
+    Detective --|> Fighter
+    Detective --|> Inventarior
+    Detective --|> Creature
+    Beast --|> Creature
+    WildBeast --|> Beast
+    RationalBeast --|> Beast
+    RationalBeast --|> Fighter
+    Foorageer --|> Beast
+    Foorageer --|> Inventarior
+    Item --|> GameObject
+    Ammo --|> Item
+    Medicine --|> Item
+    Weapon --|> Item
+    Depot --|> Item
+    Obstacle --|> GameObject
+
+    Controller --* View
+    Field --* Cell
+    Field *-- Level
+    Controller --* Level
+    Controller --o GameObject
+    Cell --* GameObject
+    Depot --* GameObject
+    Detective -- Medicine
+
+

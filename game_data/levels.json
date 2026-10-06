@@ -1,0 +1,125 @@
+{
+    "levels_count": 1,
+    "levels" : [
+        {
+            "name" : "level 1",
+            "minutes": 1,
+            "seconds": 0,
+            "preamble" : "you will start there",
+            "field" : {
+                "height" : 10,
+                "width" : 10,
+                "cells_count": 7,
+                "cells" : [
+                    {
+                        "x": 2,
+                        "y": 4,
+                        "objects_count": 1,
+                        "objects": [
+                            {
+                                "type": "obstacle",
+                                "data": {
+                                    "breakable": true
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "x": 3,
+                        "y": 6,
+                        "objects_count": 1,
+                        "objects": [
+                            {
+                                "type": "item",
+                                "data": {
+                                    "weight": 4
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "x": 8,
+                        "y": 1,
+                        "objects_count": 1,
+                        "objects": [
+                            {
+                                "type": "item",
+                                "data": {
+                                    "weight": 5
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "x": 8,
+                        "y": 9,
+                        "objects_count": 1,
+                        "objects": [
+                            {
+                                "type": "depot",
+                                "data": {
+                                    "content": [
+                                        {
+                                            "type": "weapon",
+                                            "data": {
+                                                "damage": 2,
+                                                "bullets_count": 5,
+                                                "distance": 5,
+                                                "reload_time": 1.5
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "x": 8,
+                        "y": 2,
+                        "objects_count": 1,
+                        "objects": [
+                            {
+                                "type": "rational_beast",
+                                "data": {
+                                    "armour": 3,
+                                    "max_health": 10,
+                                    "speed": 0.5
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "x": 9,
+                        "y": 3,
+                        "objects_count": 1,
+                        "objects": [
+                            {
+                                "type": "wild_beast",
+                                "data": {
+                                    "armour": 3,
+                                    "max_health": 10,
+                                    "speed": 0.5
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "x": 9,
+                        "y": 5,
+                        "objects_count": 1,
+                        "objects": [
+                            {
+                                "type": "foorageer",
+                                "data": {
+                                    "strength": 5,
+                                    "max_health": 10,
+                                    "speed": 0.5
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}
